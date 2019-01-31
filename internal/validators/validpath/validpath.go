@@ -1,7 +1,9 @@
 package validpath
 
-import "io/ioutil"
-import "os"
+import (
+	"io/ioutil"
+	"os"
+)
 
 func Valid(path string) bool {
 	if _, err := os.Stat(path); err == nil {
