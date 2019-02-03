@@ -1,6 +1,7 @@
 package remove
 
 import (
+	"log"
 	"os"
 	"strings"
 
@@ -20,7 +21,7 @@ func New(args []string) pakelib.Command {
 	}
 }
 
-func (r *remove) Execute(cfg *config.Config) error {
+func (r *remove) Execute(cfg *config.Config, logger *log.Logger) error {
 	pathToDelete := r.args[0]
 	if expandedPath, err := pathutil.Expand(pathToDelete); err == nil {
 		pathToDelete = expandedPath

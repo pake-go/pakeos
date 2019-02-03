@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"os"
 
 	"github.com/PGo-Projects/output"
@@ -28,11 +29,12 @@ func main() {
 func runFile(cmd *cobra.Command, args []string) {
 	filename := args[0]
 
+	logger := log.New(os.Stderr, "", log.LstdFlags)
 	pparser := parser.New(commands.Candidates, &comments.Validator{})
-	commands, err := pparser.ParseFile(filename)
+	commands, err := pparser.ParseFile(filename, logger)
 	if err != nil {
 		output.Error(err)
 		os.Exit(1)
 	}
-	executor.Run(commands)
+	executor.Run(commands, logger)
 }

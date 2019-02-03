@@ -1,6 +1,7 @@
 package install
 
 import (
+	"log"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -22,7 +23,7 @@ func New(args []string) pakelib.Command {
 	}
 }
 
-func (i *install) Execute(cfg *config.Config) error {
+func (i *install) Execute(cfg *config.Config, logger *log.Logger) error {
 	appRepo, appRepoErr := cfg.Get("appInstallationRepo")
 	if appRepoErr != nil {
 		return appRepoErr

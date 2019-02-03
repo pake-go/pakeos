@@ -2,6 +2,7 @@ package move
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"strings"
 
@@ -21,7 +22,7 @@ func New(args []string) pakelib.Command {
 	}
 }
 
-func (m *move) Execute(cfg *config.Config) error {
+func (m *move) Execute(cfg *config.Config, logger *log.Logger) error {
 	sourcePath := m.args[0]
 	if expandedPath, err := pathutil.Expand(sourcePath); err == nil {
 		sourcePath = expandedPath

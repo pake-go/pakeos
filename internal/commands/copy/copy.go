@@ -2,6 +2,7 @@ package copy
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"strings"
 
@@ -22,7 +23,7 @@ func New(args []string) pakelib.Command {
 	}
 }
 
-func (c *copy) Execute(cfg *config.Config) error {
+func (c *copy) Execute(cfg *config.Config, logger *log.Logger) error {
 	sourcePath := c.args[0]
 	if expandedPath, err := pathutil.Expand(sourcePath); err == nil {
 		sourcePath = expandedPath
@@ -36,7 +37,8 @@ func (c *copy) Execute(cfg *config.Config) error {
 	overwrite, overwriteErr := cfg.Get("overwrite")
 	if overwriteErr != nil || overwrite == "false" {
 		errMsg := "Destination path %s already exists and `overwrite` not set to true"
-		return fmt.Errorf(errMsg, destinationPath)
+		err := fmt.Errorf(errMsg, destinationPath)
+		return err
 	}
 	if destPathExists {
 		if err := os.RemoveAll(destinationPath); err != nil {

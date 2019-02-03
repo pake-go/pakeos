@@ -1,6 +1,7 @@
 package setdefault
 
 import (
+	"log"
 	"strings"
 
 	pakelib "github.com/pake-go/pake-lib"
@@ -18,7 +19,7 @@ func New(args []string) pakelib.Command {
 	}
 }
 
-func (sd *setdefault) Execute(cfg *config.Config) error {
+func (sd *setdefault) Execute(cfg *config.Config, logger *log.Logger) error {
 	optionName := sd.args[0]
 	optionValue := sd.args[1]
 	cfg.SetPermanently(optionName, optionValue)

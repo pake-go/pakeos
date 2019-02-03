@@ -2,6 +2,7 @@ package unlink
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"strings"
 
@@ -21,7 +22,7 @@ func New(args []string) pakelib.Command {
 	}
 }
 
-func (u *unlink) Execute(cfg *config.Config) error {
+func (u *unlink) Execute(cfg *config.Config, logger *log.Logger) error {
 	pathToUnlink := u.args[0]
 	if expandedPath, err := pathutil.Expand(pathToUnlink); err == nil {
 		pathToUnlink = expandedPath

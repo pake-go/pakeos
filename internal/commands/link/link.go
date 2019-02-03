@@ -2,6 +2,7 @@ package link
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"strings"
 
@@ -21,7 +22,7 @@ func New(args []string) pakelib.Command {
 	}
 }
 
-func (l *link) Execute(cfg *config.Config) error {
+func (l *link) Execute(cfg *config.Config, logger *log.Logger) error {
 	sourcePath := l.args[0]
 	if expandedPath, err := pathutil.Expand(sourcePath); err == nil {
 		sourcePath = expandedPath
