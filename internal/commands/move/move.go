@@ -34,7 +34,7 @@ func (m *move) Execute(cfg *config.Config, logger *log.Logger) error {
 	destPathExists := pathutil.Exists(destinationPath)
 
 	overwrite, overwriteErr := cfg.Get("overwrite")
-	if overwriteErr != nil || overwrite == "false" {
+	if destPathExists && (overwriteErr != nil || overwrite == "false") {
 		errMsg := "Destination path %s already exists and `overwrite` not set to true"
 		return fmt.Errorf(errMsg, destinationPath)
 	}
