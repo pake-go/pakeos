@@ -24,6 +24,8 @@ func New(args []string) pakelib.Command {
 }
 
 func (u *uninstall) Execute(cfg *config.Config, logger *log.Logger) error {
+	logger.Printf("Uninstalling %s\n", u.args[0])
+
 	appRepo, appRepoErr := cfg.Get("appInstallationRepo")
 	if appRepoErr != nil {
 		return appRepoErr

@@ -20,6 +20,8 @@ func New(args []string) pakelib.Command {
 }
 
 func (s *set) Execute(cfg *config.Config, logger *log.Logger) error {
+	logger.Printf("Temporarily setting %s to %s\n", s.args[0], s.args[1])
+
 	optionName := s.args[0]
 	optionValue := s.args[1]
 	cfg.SetTemporarily(optionName, optionValue)

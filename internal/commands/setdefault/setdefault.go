@@ -20,6 +20,8 @@ func New(args []string) pakelib.Command {
 }
 
 func (sd *setdefault) Execute(cfg *config.Config, logger *log.Logger) error {
+	logger.Printf("Setting the default value for %s to %s\n", sd.args[0], sd.args[1])
+
 	optionName := sd.args[0]
 	optionValue := sd.args[1]
 	cfg.SetPermanently(optionName, optionValue)

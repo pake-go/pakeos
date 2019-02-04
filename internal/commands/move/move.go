@@ -23,6 +23,8 @@ func New(args []string) pakelib.Command {
 }
 
 func (m *move) Execute(cfg *config.Config, logger *log.Logger) error {
+	logger.Printf("Moving %s to %s\n", m.args[0], m.args[1])
+
 	sourcePath := m.args[0]
 	if expandedPath, err := pathutil.Expand(sourcePath); err == nil {
 		sourcePath = expandedPath

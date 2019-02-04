@@ -24,6 +24,8 @@ func New(args []string) pakelib.Command {
 }
 
 func (i *install) Execute(cfg *config.Config, logger *log.Logger) error {
+	logger.Printf("Installing %s\n", i.args[0])
+
 	appRepo, appRepoErr := cfg.Get("appInstallationRepo")
 	if appRepoErr != nil {
 		return appRepoErr

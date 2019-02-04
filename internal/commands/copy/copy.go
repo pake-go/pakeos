@@ -24,6 +24,8 @@ func New(args []string) pakelib.Command {
 }
 
 func (c *copy) Execute(cfg *config.Config, logger *log.Logger) error {
+	logger.Printf("Copying %s to %s\n", c.args[0], c.args[1])
+
 	sourcePath := c.args[0]
 	if expandedPath, err := pathutil.Expand(sourcePath); err == nil {
 		sourcePath = expandedPath

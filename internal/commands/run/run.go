@@ -24,6 +24,8 @@ func New(args []string) pakelib.Command {
 }
 
 func (r *run) Execute(cfg *config.Config, logger *log.Logger) error {
+	logger.Printf("Running  %s\n", strings.Join(r.args, " "))
+
 	var cmd *exec.Cmd
 	if len(r.args) != 1 {
 		cmd = exec.Command("sh", "-c", strings.Join(r.args, " "))

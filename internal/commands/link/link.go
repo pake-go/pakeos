@@ -23,6 +23,8 @@ func New(args []string) pakelib.Command {
 }
 
 func (l *link) Execute(cfg *config.Config, logger *log.Logger) error {
+	logger.Printf("Linking %s to %s\n", l.args[0], l.args[1])
+
 	sourcePath := l.args[0]
 	if expandedPath, err := pathutil.Expand(sourcePath); err == nil {
 		sourcePath = expandedPath

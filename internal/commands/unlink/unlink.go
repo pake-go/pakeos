@@ -23,6 +23,8 @@ func New(args []string) pakelib.Command {
 }
 
 func (u *unlink) Execute(cfg *config.Config, logger *log.Logger) error {
+	logger.Printf("Unlinking %s\n", u.args[0])
+
 	pathToUnlink := u.args[0]
 	if expandedPath, err := pathutil.Expand(pathToUnlink); err == nil {
 		pathToUnlink = expandedPath
