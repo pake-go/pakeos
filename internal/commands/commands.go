@@ -7,6 +7,7 @@ import (
 	"github.com/pake-go/pakeos/internal/commands/link"
 	"github.com/pake-go/pakeos/internal/commands/move"
 	"github.com/pake-go/pakeos/internal/commands/remove"
+	"github.com/pake-go/pakeos/internal/commands/run"
 	"github.com/pake-go/pakeos/internal/commands/set"
 	"github.com/pake-go/pakeos/internal/commands/setdefault"
 	"github.com/pake-go/pakeos/internal/commands/uninstall"
@@ -19,6 +20,7 @@ var Candidates = []pakelib.CommandCandidate{
 	linkCandidate,
 	moveCandidate,
 	removeCandidate,
+	runCandidate,
 	setCandidate,
 	setdefaultCandidate,
 	uninstallCandidate,
@@ -48,6 +50,11 @@ var moveCandidate = pakelib.CommandCandidate{
 var removeCandidate = pakelib.CommandCandidate{
 	Validator:   &remove.RemoveValidator{},
 	Constructor: remove.New,
+}
+
+var runCandidate = pakelib.CommandCandidate{
+	Validator:   &run.RunValidator{},
+	Constructor: run.New,
 }
 
 var setCandidate = pakelib.CommandCandidate{
