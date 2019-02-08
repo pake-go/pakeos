@@ -119,7 +119,7 @@ func TestCanHandle_validline(t *testing.T) {
 func TestValidateArgs_invalidarg(t *testing.T) {
 	args := []string{}
 	rv := &RunValidator{}
-	if rv.ValidateArgs(args) {
+	if rv.ValidateArgs(args) == nil {
 		t.Errorf("%+q should not be valid", args)
 	}
 }
@@ -127,7 +127,7 @@ func TestValidateArgs_invalidarg(t *testing.T) {
 func TestValidateArgs_validarg(t *testing.T) {
 	args := []string{"python", "hi.py"}
 	rv := &RunValidator{}
-	if !rv.ValidateArgs(args) {
+	if rv.ValidateArgs(args) != nil {
 		t.Errorf("%+q should be valid", args)
 	}
 }

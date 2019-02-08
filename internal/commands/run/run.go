@@ -74,6 +74,9 @@ func (rv *RunValidator) CanHandle(line string) bool {
 	return strings.HasPrefix(line, "run ")
 }
 
-func (rv *RunValidator) ValidateArgs(args []string) bool {
-	return len(args) > 0
+func (rv *RunValidator) ValidateArgs(args []string) error {
+	if len(args) <= 0 {
+		return fmt.Errorf("Expected at least one argument, got %d", len(args))
+	}
+	return nil
 }

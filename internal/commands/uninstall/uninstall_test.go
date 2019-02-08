@@ -40,7 +40,7 @@ func TestCanHandle_validline(t *testing.T) {
 func TestValidateArgs_invalidarg(t *testing.T) {
 	args := []string{"fd", "die"}
 	uv := &UninstallValidator{}
-	if uv.ValidateArgs(args) {
+	if uv.ValidateArgs(args) == nil {
 		t.Errorf("%+q should not be valid", args)
 	}
 }
@@ -48,7 +48,7 @@ func TestValidateArgs_invalidarg(t *testing.T) {
 func TestValidateArgs_validarg(t *testing.T) {
 	args := []string{"fd"}
 	uv := &UninstallValidator{}
-	if !uv.ValidateArgs(args) {
+	if uv.ValidateArgs(args) != nil {
 		t.Errorf("%+q should be valid", args)
 	}
 }

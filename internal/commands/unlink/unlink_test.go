@@ -89,7 +89,7 @@ func TestValidateArgs_invalidarg(t *testing.T) {
 	}
 
 	uv := &UnlinkValidator{}
-	if uv.ValidateArgs(args) {
+	if uv.ValidateArgs(args) == nil {
 		t.Errorf("%+q should not be valid", args)
 	}
 }
@@ -97,7 +97,7 @@ func TestValidateArgs_invalidarg(t *testing.T) {
 func TestValidateArgs_validarg(t *testing.T) {
 	args := []string{"hello"}
 	uv := &UnlinkValidator{}
-	if !uv.ValidateArgs(args) {
+	if uv.ValidateArgs(args) != nil {
 		t.Errorf("%+q should be valid", args)
 	}
 }

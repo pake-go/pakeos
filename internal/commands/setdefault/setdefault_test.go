@@ -67,7 +67,7 @@ func TestCanHandle_validline(t *testing.T) {
 func TestValidateArgs_invalidoptionname(t *testing.T) {
 	args := []string{"o", "nil"}
 	sdv := &SetDefaultValidator{}
-	if sdv.ValidateArgs(args) {
+	if sdv.ValidateArgs(args) == nil {
 		t.Errorf("%+q should not be valid", args)
 	}
 }
@@ -75,7 +75,7 @@ func TestValidateArgs_invalidoptionname(t *testing.T) {
 func TestValidateArgs_invalidoptionvalue(t *testing.T) {
 	args := []string{"overwrite", "nil"}
 	sdv := &SetDefaultValidator{}
-	if sdv.ValidateArgs(args) {
+	if sdv.ValidateArgs(args) == nil {
 		t.Errorf("%+q should not be valid", args)
 	}
 }
@@ -83,7 +83,7 @@ func TestValidateArgs_invalidoptionvalue(t *testing.T) {
 func TestValidateArgs_invalidoptionnamevalue(t *testing.T) {
 	args := []string{"o", "t"}
 	sdv := &SetDefaultValidator{}
-	if sdv.ValidateArgs(args) {
+	if sdv.ValidateArgs(args) == nil {
 		t.Errorf("%+q should not be valid", args)
 	}
 }
@@ -91,7 +91,7 @@ func TestValidateArgs_invalidoptionnamevalue(t *testing.T) {
 func TestValidateArgs_validargs(t *testing.T) {
 	args := []string{"overwrite", "true"}
 	sdv := &SetDefaultValidator{}
-	if !sdv.ValidateArgs(args) {
+	if sdv.ValidateArgs(args) != nil {
 		t.Errorf("%+q should be valid", args)
 	}
 }

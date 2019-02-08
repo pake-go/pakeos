@@ -119,7 +119,7 @@ func TestValidateArgs_oneinvalidargs(t *testing.T) {
 		args = []string{"hello", "hello?"}
 	}
 	mv := &MoveValidator{}
-	if mv.ValidateArgs(args) {
+	if mv.ValidateArgs(args) == nil {
 		t.Errorf("%+q should not be valid", args)
 	}
 }
@@ -132,7 +132,7 @@ func TestValidateArgs_allinvalidargs(t *testing.T) {
 		args = []string{"hello?", "hello?"}
 	}
 	mv := &MoveValidator{}
-	if mv.ValidateArgs(args) {
+	if mv.ValidateArgs(args) == nil {
 		t.Errorf("%+q should not be valid", args)
 	}
 }
@@ -140,7 +140,7 @@ func TestValidateArgs_allinvalidargs(t *testing.T) {
 func TestValidateArgs_validargs(t *testing.T) {
 	args := []string{"hello", "bye"}
 	mv := &MoveValidator{}
-	if !mv.ValidateArgs(args) {
+	if mv.ValidateArgs(args) != nil {
 		t.Errorf("%+q should be valid", args)
 	}
 }

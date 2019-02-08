@@ -64,11 +64,14 @@ func (mv *MoveValidator) CanHandle(line string) bool {
 	return strings.HasPrefix(line, "move ")
 }
 
-func (mv *MoveValidator) ValidateArgs(args []string) bool {
+func (mv *MoveValidator) ValidateArgs(args []string) error {
 	for _, arg := range args {
 		if !validpath.Valid(arg) {
-			return false
+			return fmt.Errorf("%s is not a valid argument", arg)
 		}
 	}
-	return len(args) == 2
+	if len(args) != 2 {
+		return fmt.Errorf("Expected there to be 2 arguments, but got %d", len(args))
+	}
+	return nil
 }

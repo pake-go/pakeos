@@ -1,6 +1,7 @@
 package setdefault
 
 import (
+	"fmt"
 	"log"
 	"strings"
 
@@ -35,11 +36,14 @@ func (sdv *SetDefaultValidator) CanHandle(line string) bool {
 	return strings.HasPrefix(line, "setdefault ")
 }
 
-func (sdv *SetDefaultValidator) ValidateArgs(args []string) bool {
+func (sdv *SetDefaultValidator) ValidateArgs(args []string) error {
 	if len(args) != 2 {
-		return false
+		return fmt.Errorf("Expected there to be 2 arguments, but got %d", len(args))
 	}
 	optionName := args[0]
 	optionValue := args[1]
-	return validconfig.Valid(optionName, optionValue)
+	if !validconfig.Valid(optionName, optionValue) {
+		return fmt.Errorf("%s, %s is not a valid pair", optionName, optionValue)
+	}
+	return nil
 }

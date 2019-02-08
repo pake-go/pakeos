@@ -1,6 +1,7 @@
 package set
 
 import (
+	"fmt"
 	"log"
 	"strings"
 
@@ -35,11 +36,14 @@ func (sv *SetValidator) CanHandle(line string) bool {
 	return strings.HasPrefix(line, "set ")
 }
 
-func (sv *SetValidator) ValidateArgs(args []string) bool {
+func (sv *SetValidator) ValidateArgs(args []string) error {
 	if len(args) != 2 {
-		return false
+		return fmt.Errorf("Expected there to be 2 arguments, but got %d", len(args))
 	}
 	optionName := args[0]
 	optionValue := args[1]
-	return validconfig.Valid(optionName, optionValue)
+	if !validconfig.Valid(optionName, optionValue) {
+		return fmt.Errorf("%s, %s is not a valid pair", optionName, optionValue)
+	}
+	return nil
 }

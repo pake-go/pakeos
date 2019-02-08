@@ -1,6 +1,7 @@
 package uninstall
 
 import (
+	"fmt"
 	"log"
 	"os"
 	"os/exec"
@@ -52,6 +53,9 @@ func (uv *UninstallValidator) CanHandle(line string) bool {
 	return strings.HasPrefix(line, "uninstall ")
 }
 
-func (uv *UninstallValidator) ValidateArgs(args []string) bool {
-	return len(args) == 1
+func (uv *UninstallValidator) ValidateArgs(args []string) error {
+	if len(args) != 1 {
+		return fmt.Errorf("Expected there to be 1 argument, but got %d", len(args))
+	}
+	return nil
 }

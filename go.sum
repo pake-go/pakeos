@@ -2,6 +2,8 @@ github.com/PGo-Projects/output v0.0.0-20181030161838-eb5f9fd060a4 h1:Mxz1xpGy39k
 github.com/PGo-Projects/output v0.0.0-20181030161838-eb5f9fd060a4/go.mod h1:sFKzl/RKdoOKcqPo9SWoLHacqsnd4oe9dcvYtinV69Q=
 github.com/buger/goterm v0.0.0-20180423150900-6d19e6a8df12 h1:aZVdiV35VTHoMJnL2GcJFxuedXBJUJx5YRw1sif1XN4=
 github.com/buger/goterm v0.0.0-20180423150900-6d19e6a8df12/go.mod h1:u9UyCz2eTrSGy6fbupqJ54eY5c4IC8gREQ1053dK12U=
+github.com/buger/goterm v0.0.0-20181115115552-c206103e1f37 h1:uxxtrnACqI9zK4ENDMf0WpXfUsHP5V8liuq5QdgDISU=
+github.com/buger/goterm v0.0.0-20181115115552-c206103e1f37/go.mod h1:u9UyCz2eTrSGy6fbupqJ54eY5c4IC8gREQ1053dK12U=
 github.com/google/go-cmp v0.2.0 h1:+dTQ8DZQJz0Mb/HjFlkptS1FeQ4cWSnN941F8aEG4SQ=
 github.com/google/go-cmp v0.2.0/go.mod h1:oXzfMopK8JAjlY9xF4vHSVASa0yLyX7SntLO5aqRK0M=
 github.com/google/uuid v1.1.0 h1:Jf4mxPC/ziBnoPIdpQdPJ9OeiomAUHLvxmPRSPH9m4s=
@@ -16,6 +18,8 @@ github.com/mitchellh/go-homedir v1.1.0 h1:lukF9ziXFxDFPkA1vsr5zpc1XuPDn/wFntq5mG
 github.com/mitchellh/go-homedir v1.1.0/go.mod h1:SfyaCUpYCn1Vlf4IUYiD9fPX4A5wJrkLzIz1N1q0pr0=
 github.com/pake-go/pake-lib v0.0.0-20190207024528-6182e236e791 h1:fs9s0skcsu1eZerKHv9bObxtoyl8Y6e/WsMietkyxyE=
 github.com/pake-go/pake-lib v0.0.0-20190207024528-6182e236e791/go.mod h1:zA6lzXYwntWDHy8p/aoY0EohOH9AB56j49EA0nFKnII=
+github.com/pake-go/pake-lib v0.0.0-20190208131704-938bc769b0fe h1:woxdtAnr0zRJ+dzuJEeAiOw7zspP7cLkcRjiQBs33zA=
+github.com/pake-go/pake-lib v0.0.0-20190208131704-938bc769b0fe/go.mod h1:zA6lzXYwntWDHy8p/aoY0EohOH9AB56j49EA0nFKnII=
 github.com/spf13/cobra v0.0.3 h1:ZlrZ4XsMRm04Fr5pSFxBgfND2EBVa1nLpiy1stUsX/8=
 github.com/spf13/cobra v0.0.3/go.mod h1:1l0Ry5zgKvJasoi3XT1TypsSe7PqH0Sj9dhYf7v3XqQ=
 github.com/spf13/pflag v1.0.3 h1:zPAT6CGy6wXeQ7NtTnaTerfKOsV6V6F8agHXFiazDkg=
@@ -24,3 +28,5 @@ github.com/udhos/equalfile v0.3.0 h1:KhG4xhhkittrgIV/ekHtpEPh7MLxtbjm6kLEwp5Dlbg
 github.com/udhos/equalfile v0.3.0/go.mod h1:1LOX9HjdFMke7ryP3IPby09FkswyY5KzhhsT37wLz/Y=
 golang.org/x/sys v0.0.0-20181030150119-7e31e0c00fa0 h1:biUuj9O+0+XckRUCDzjoOGm6yFV5c0IHbm1ODP3e4Zw=
 golang.org/x/sys v0.0.0-20181030150119-7e31e0c00fa0/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=
+golang.org/x/sys v0.0.0-20190204203706-41f3e6584952 h1:FDfvYgoVsA7TTZSbgiqjAbfPbK47CNHdWl3h/PJtii0=
+golang.org/x/sys v0.0.0-20190204203706-41f3e6584952/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=

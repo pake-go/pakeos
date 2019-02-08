@@ -1,6 +1,7 @@
 package remove
 
 import (
+	"fmt"
 	"log"
 	"os"
 	"strings"
@@ -38,11 +39,14 @@ func (rv *RemoveValidator) CanHandle(line string) bool {
 	return strings.HasPrefix(line, "remove ")
 }
 
-func (rv *RemoveValidator) ValidateArgs(args []string) bool {
+func (rv *RemoveValidator) ValidateArgs(args []string) error {
 	for _, arg := range args {
 		if !validpath.Valid(arg) {
-			return false
+			return fmt.Errorf("%s is not a valid argument", arg)
 		}
 	}
-	return len(args) == 1
+	if len(args) != 1 {
+		return fmt.Errorf("Expected there to be 1 argument, but got %d", len(args))
+	}
+	return nil
 }

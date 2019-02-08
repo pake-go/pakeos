@@ -200,7 +200,7 @@ func TestValidateArgs_oneinvalidarg(t *testing.T) {
 		args = []string{"hello", "hello?"}
 	}
 	cv := &CopyValidator{}
-	if cv.ValidateArgs(args) {
+	if cv.ValidateArgs(args) == nil {
 		t.Errorf("%+q should not be valid", args)
 	}
 }
@@ -213,7 +213,7 @@ func TestValidateArgs_allinvalidargs(t *testing.T) {
 		args = []string{"hello?", "hello?"}
 	}
 	cv := &CopyValidator{}
-	if cv.ValidateArgs(args) {
+	if cv.ValidateArgs(args) == nil {
 		t.Errorf("%+q should not be valid", args)
 	}
 }
@@ -221,7 +221,7 @@ func TestValidateArgs_allinvalidargs(t *testing.T) {
 func TestValidateArgs_validargs(t *testing.T) {
 	args := []string{"hello", "bye"}
 	cv := &CopyValidator{}
-	if !cv.ValidateArgs(args) {
+	if cv.ValidateArgs(args) != nil {
 		t.Errorf("%+q should be valid", args)
 	}
 }

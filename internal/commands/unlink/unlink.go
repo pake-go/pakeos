@@ -47,11 +47,14 @@ func (uv *UnlinkValidator) CanHandle(line string) bool {
 	return strings.HasPrefix(line, "unlink ")
 }
 
-func (uv *UnlinkValidator) ValidateArgs(args []string) bool {
+func (uv *UnlinkValidator) ValidateArgs(args []string) error {
 	for _, arg := range args {
 		if !validpath.Valid(arg) {
-			return false
+			return fmt.Errorf("%s is not a valid argument", arg)
 		}
 	}
-	return len(args) == 1
+	if len(args) != 1 {
+		return fmt.Errorf("Expected there to be 1 argument, but got %d", len(args))
+	}
+	return nil
 }

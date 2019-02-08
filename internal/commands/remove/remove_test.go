@@ -115,7 +115,7 @@ func TestValidateArgs_invalidarg(t *testing.T) {
 		args = []string{"hello?"}
 	}
 	rv := &RemoveValidator{}
-	if rv.ValidateArgs(args) {
+	if rv.ValidateArgs(args) == nil {
 		t.Errorf("%+q should not be valid", args)
 	}
 }
@@ -123,7 +123,7 @@ func TestValidateArgs_invalidarg(t *testing.T) {
 func TestValidateArgs_validarg(t *testing.T) {
 	args := []string{"hello"}
 	rv := &RemoveValidator{}
-	if !rv.ValidateArgs(args) {
+	if rv.ValidateArgs(args) != nil {
 		t.Errorf("%+q should be valid", args)
 	}
 }

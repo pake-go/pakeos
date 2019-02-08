@@ -99,7 +99,7 @@ func TestValidateArgs_oneinvalidarg(t *testing.T) {
 		args = []string{"hello?", "bye"}
 	}
 	lv := &LinkValidator{}
-	if lv.ValidateArgs(args) {
+	if lv.ValidateArgs(args) == nil {
 		t.Errorf("%+q should not be valid", args)
 	}
 }
@@ -112,7 +112,7 @@ func TestValidArgs_invalidargs(t *testing.T) {
 		args = []string{"hello?", "bye?"}
 	}
 	lv := &LinkValidator{}
-	if lv.ValidateArgs(args) {
+	if lv.ValidateArgs(args) == nil {
 		t.Errorf("%+q should not be valid", args)
 	}
 }
@@ -120,7 +120,7 @@ func TestValidArgs_invalidargs(t *testing.T) {
 func TestValidArgs_validargs(t *testing.T) {
 	args := []string{"hello", "bye"}
 	lv := &LinkValidator{}
-	if !lv.ValidateArgs(args) {
+	if lv.ValidateArgs(args) != nil {
 		t.Errorf("%+q should be valid", args)
 	}
 }
