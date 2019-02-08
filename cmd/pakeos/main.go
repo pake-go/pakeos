@@ -12,6 +12,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
+// RootCmd defines the CLI app.
 var rootCmd = &cobra.Command{
 	Use:   "pakeos <file>",
 	Short: "pakeos is a tool to help bootstrap OS/dotfiles",
@@ -26,6 +27,7 @@ func main() {
 	}
 }
 
+// RunFile parses and runs the file.
 func runFile(cmd *cobra.Command, args []string) {
 	filename := args[0]
 

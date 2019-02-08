@@ -7,6 +7,7 @@ import (
 	"github.com/pake-go/pakeos/internal/utils/pathutil"
 )
 
+// Valid checks to see if the given path is valid.
 func Valid(path string) bool {
 	path, _ = pathutil.Expand(path)
 	if _, err := os.Stat(path); err == nil {

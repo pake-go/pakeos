@@ -14,6 +14,7 @@ import (
 	"github.com/pake-go/pakeos/internal/commands/unlink"
 )
 
+// Candidates is a list of commands that might be used in the source file.
 var Candidates = []pakelib.CommandCandidate{
 	copyCandidate,
 	installCandidate,

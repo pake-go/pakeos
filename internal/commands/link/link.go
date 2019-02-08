@@ -12,16 +12,19 @@ import (
 	"github.com/pake-go/pakeos/internal/validators/validpath"
 )
 
+// The link command is used to create a symlnk for a file or directory.
 type link struct {
 	args []string
 }
 
+// New returns an instance of the link command for creating symlinks.
 func New(args []string) pakelib.Command {
 	return &link{
 		args: args,
 	}
 }
 
+// Execute runs the link action and returns any error it contains.
 func (l *link) Execute(cfg *config.Config, logger *log.Logger) error {
 	logger.Printf("Linking %s to %s\n", l.args[0], l.args[1])
 
@@ -51,13 +54,19 @@ func (l *link) Execute(cfg *config.Config, logger *log.Logger) error {
 	return os.Symlink(sourcePath, destinationPath)
 }
 
+// LinkValidator represents the object used to check if a line is valid for the link
+// command.
 type LinkValidator struct {
 }
 
+// CanHandle reports if the given line represents source code that can be handled by the
+// link command.
 func (lv *LinkValidator) CanHandle(line string) bool {
 	return strings.HasPrefix(line, "link ")
 }
 
+// ValidateArgs checks to see if the given arguments are valid arguments for the link
+// command.
 func (lv *LinkValidator) ValidateArgs(args []string) error {
 	for _, arg := range args {
 		if !validpath.Valid(arg) {

@@ -7,6 +7,7 @@ import (
 	homedir "github.com/mitchellh/go-homedir"
 )
 
+// Exists checks to see if the given path exists.
 func Exists(path string) bool {
 	if _, err := os.Stat(path); err == nil {
 		return true
@@ -14,6 +15,8 @@ func Exists(path string) bool {
 	return false
 }
 
+// Expand attempts to expand ~ or $HOME in the given path and return
+// any error found during that process.
 func Expand(path string) (string, error) {
 	if strings.HasPrefix(path, "$HOME") {
 		path = strings.Replace(path, "$HOME", "~", 1)
@@ -21,6 +24,8 @@ func Expand(path string) (string, error) {
 	return homedir.Expand(path)
 }
 
+// IsDir checks to see if the given path is a directory that exists and
+// return any error found.
 func IsDir(path string) (bool, error) {
 	file, err := os.Open(path)
 
@@ -40,6 +45,8 @@ func IsDir(path string) (bool, error) {
 	}
 }
 
+// IsSymlihnk checks to see if the given path is a valid symlink that exists and
+// return any error found.
 func IsSymlink(path string) (bool, error) {
 	fileInfo, err := os.Lstat(path)
 	if err == nil {

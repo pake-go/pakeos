@@ -13,16 +13,19 @@ import (
 	"github.com/pake-go/pakeos/internal/validators/validpath"
 )
 
+// The move command is used to move a directory or file from one place to another.
 type move struct {
 	args []string
 }
 
+// New returns an instance of the move command for moving files.
 func New(args []string) pakelib.Command {
 	return &move{
 		args: args,
 	}
 }
 
+// Execute runs the move action and returns any error it encounters.
 func (m *move) Execute(cfg *config.Config, logger *log.Logger) error {
 	logger.Printf("Moving %s to %s\n", m.args[0], m.args[1])
 
@@ -57,13 +60,19 @@ func (m *move) Execute(cfg *config.Config, logger *log.Logger) error {
 	}
 }
 
+// MoveValidator represents the object used to check if a line is valid for the move
+// command.
 type MoveValidator struct {
 }
 
+// CanHandle reports if the given line represents source code that can be handled by the
+// move command.
 func (mv *MoveValidator) CanHandle(line string) bool {
 	return strings.HasPrefix(line, "move ")
 }
 
+// Validate args checks to see if the given arguments are valid arguments for the move
+// command.
 func (mv *MoveValidator) ValidateArgs(args []string) error {
 	for _, arg := range args {
 		if !validpath.Valid(arg) {

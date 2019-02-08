@@ -13,16 +13,19 @@ import (
 	"github.com/pake-go/pakeos/internal/utils/pathutil"
 )
 
+// The run command is used to run scripts.
 type run struct {
 	args []string
 }
 
+// New returns an instance of the run command for running scripts.
 func New(args []string) pakelib.Command {
 	return &run{
 		args: args,
 	}
 }
 
+// Execute runs the run action and returns any error it encounters.
 func (r *run) Execute(cfg *config.Config, logger *log.Logger) error {
 	logger.Printf("Running  %s\n", strings.Join(r.args, " "))
 
@@ -67,13 +70,19 @@ func (r *run) Execute(cfg *config.Config, logger *log.Logger) error {
 	return cmd.Run()
 }
 
+// RunValidator represents the object used to check if a line is valid and the run
+// command.
 type RunValidator struct {
 }
 
+// CanHandle reports if the given line represents source code that can be handled by the
+// run command.
 func (rv *RunValidator) CanHandle(line string) bool {
 	return strings.HasPrefix(line, "run ")
 }
 
+// ValidateArgs checks to see if the given arguments are valid arguments for the run
+// command.
 func (rv *RunValidator) ValidateArgs(args []string) error {
 	if len(args) <= 0 {
 		return fmt.Errorf("Expected at least one argument, got %d", len(args))
