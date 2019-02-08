@@ -34,13 +34,19 @@ func (r *run) Execute(cfg *config.Config, logger *log.Logger) error {
 		extension := filepath.Ext(executablePath)
 		switch extension {
 		case ".class":
-			filename := strings.TrimSuffix(executablePath, extension)
-			cmd = exec.Command("java", filename)
+			basename := filepath.Base(executablePath)
+			directory := filepath.Dir(executablePath)
+			filename := strings.TrimSuffix(basename, extension)
+			command := fmt.Sprintf("java -cp %s %s", directory, filename)
+			cmd = exec.Command("sh", "-c", command)
 		case ".jar":
 			cmd = exec.Command("javar", "-jar", executablePath)
 		case ".java":
-			filename := strings.TrimSuffix(executablePath, extension)
-			command := fmt.Sprintf("javac %[1]s.java && java %[1]s", filename)
+			basename := filepath.Base(executablePath)
+			directory := filepath.Dir(executablePath)
+			filename := strings.TrimSuffix(basename, extension)
+			cmdFmt := "javac -d %[1]s %[3]s && java -cp %[1]s %[2]s"
+			command := fmt.Sprintf(cmdFmt, directory, filename, executablePath)
 			cmd = exec.Command("sh", "-c", command)
 		case ".py":
 			cmd = exec.Command("python", executablePath)
