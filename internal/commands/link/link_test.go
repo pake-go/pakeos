@@ -4,6 +4,7 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"runtime"
 	"testing"
 
 	"github.com/pake-go/pake-lib/config"
@@ -91,7 +92,12 @@ func TestCanHandle_validline(t *testing.T) {
 }
 
 func TestValidateArgs_oneinvalidarg(t *testing.T) {
-	args := []string{"/dev/null/hello", "bye"}
+	var args []string
+	if runtime.GOOS == "linux" || runtime.GOOS == "darwin" {
+		args = []string{"/dev/null/hello", "bye"}
+	} else {
+		args = []string{"hello?", "bye"}
+	}
 	lv := &LinkValidator{}
 	if lv.ValidateArgs(args) {
 		t.Errorf("%+q should not be valid", args)
@@ -99,7 +105,12 @@ func TestValidateArgs_oneinvalidarg(t *testing.T) {
 }
 
 func TestValidArgs_invalidargs(t *testing.T) {
-	args := []string{"/dev/null/hello", "/dev/null/bye"}
+	var args []string
+	if runtime.GOOS == "linux" || runtime.GOOS == "darwin" {
+		args = []string{"/dev/null/hello", "/dev/null/bye"}
+	} else {
+		args = []string{"hello?", "bye?"}
+	}
 	lv := &LinkValidator{}
 	if lv.ValidateArgs(args) {
 		t.Errorf("%+q should not be valid", args)
