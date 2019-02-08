@@ -11,10 +11,10 @@ import (
 func TestExecute(t *testing.T) {
 	logger := log.New(ioutil.Discard, "", 0)
 	cfg := config.New()
-	cfg.SetPermanently("appInstallationRepo", "~/PChan-Linux/apps")
+	cfg.SetPermanently("appInstallationRepo", "test")
 	cfg.SetPermanently("distro", "arch")
 
-	u := &uninstall{[]string{"fd"}}
+	u := &uninstall{[]string{"hello"}}
 	err := u.Execute(cfg, logger)
 	if err != nil {
 		t.Error(err)

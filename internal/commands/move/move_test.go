@@ -91,6 +91,7 @@ func TestExecute_destnotexists(t *testing.T) {
 		pathutil.Exists(src) {
 		t.Errorf("Expected %s to be moved to %s", src, dest)
 	}
+	_ = os.RemoveAll(dest)
 }
 
 func TestCanHandle_invalidline(t *testing.T) {
