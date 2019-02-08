@@ -33,10 +33,13 @@ func (l *link) Execute(cfg *config.Config, logger *log.Logger) error {
 	if expandedPath, err := pathutil.Expand(destinationPath); err == nil {
 		destinationPath = expandedPath
 	}
-	destPathExists := pathutil.Exists(destinationPath)
+	destPathExists, err := pathutil.IsSymlink(destinationPath)
+	if err != nil {
+		destPathExists = pathutil.Exists(destinationPath)
+	}
 
 	overwrite, overwriteErr := cfg.Get("overwrite")
-	if overwriteErr != nil || overwrite == "false" {
+	if destPathExists && (overwriteErr != nil || overwrite == "false") {
 		errMsg := "Destination path %s already exists and `overwrite` not set to true"
 		return fmt.Errorf(errMsg, destinationPath)
 	}
