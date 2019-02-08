@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"path/filepath"
 	"strings"
 
 	pakelib "github.com/pake-go/pake-lib"
@@ -33,19 +34,27 @@ func (m *move) Execute(cfg *config.Config, logger *log.Logger) error {
 	if expandedPath, err := pathutil.Expand(destinationPath); err == nil {
 		destinationPath = expandedPath
 	}
-	destPathExists := pathutil.Exists(destinationPath)
 
-	overwrite, overwriteErr := cfg.Get("overwrite")
-	if destPathExists && (overwriteErr != nil || overwrite == "false") {
-		errMsg := "Destination path %s already exists and `overwrite` not set to true"
-		return fmt.Errorf(errMsg, destinationPath)
+	destPathExists := pathutil.Exists(destinationPath)
+	srcIsDir, err := pathutil.IsDir(sourcePath)
+	if err != nil {
+		return err
 	}
-	if destPathExists {
-		if err := os.RemoveAll(destinationPath); err != nil {
-			return err
-		}
+	destIsDir, err := pathutil.IsDir(destinationPath)
+	if err != nil && destPathExists {
+		return err
 	}
-	return os.Rename(sourcePath, destinationPath)
+
+	if destPathExists && destIsDir {
+		basename := filepath.Base(sourcePath)
+		return os.Rename(sourcePath, filepath.Join(destinationPath, basename))
+	} else if destPathExists && !srcIsDir && !destIsDir {
+		return os.Rename(sourcePath, destinationPath)
+	} else if destPathExists {
+		return fmt.Errorf("%s is a file which cannot be overwritten", destinationPath)
+	} else {
+		return os.Rename(sourcePath, destinationPath)
+	}
 }
 
 type MoveValidator struct {
