@@ -100,6 +100,24 @@ func TestExecute_runmultipleargs(t *testing.T) {
 	}
 }
 
+func TestExecute_runquotedmultipleargs(t *testing.T) {
+	logger := log.New(ioutil.Discard, "", 0)
+	cfg := config.New()
+
+	arg := "python test/hi.py"
+
+	r := &run{[]string{arg}}
+	out := capturer.CaptureOutput(func() {
+		err := r.Execute(cfg, logger)
+		if err != nil {
+			t.Error(err)
+		}
+	})
+	if out != "Hello World\n" {
+		t.Errorf("Expected Hello World\n but got %s", out)
+	}
+}
+
 func TestCanHandle_invalidline(t *testing.T) {
 	line := "run"
 	rv := &RunValidator{}

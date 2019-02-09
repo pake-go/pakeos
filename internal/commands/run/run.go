@@ -10,6 +10,7 @@ import (
 
 	pakelib "github.com/pake-go/pake-lib"
 	"github.com/pake-go/pake-lib/config"
+	"github.com/pake-go/pake-lib/utils/argutil"
 	"github.com/pake-go/pakeos/internal/utils/pathutil"
 )
 
@@ -28,10 +29,16 @@ func New(args []string) pakelib.Command {
 // Execute runs the run action and returns any error it encounters.
 func (r *run) Execute(cfg *config.Config, logger *log.Logger) error {
 	logger.Printf("Running  %s\n", strings.Join(r.args, " "))
+	tokens, err := argutil.GetTokens(r.args[0])
+	if err != nil {
+		return err
+	}
 
 	var cmd *exec.Cmd
 	if len(r.args) != 1 {
 		cmd = exec.Command("sh", "-c", strings.Join(r.args, " "))
+	} else if len(tokens) != 1 {
+		cmd = exec.Command("sh", "-c", r.args[0])
 	} else {
 		executablePath := r.args[0]
 		extension := filepath.Ext(executablePath)
