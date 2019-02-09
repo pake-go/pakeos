@@ -5,6 +5,7 @@ import (
 	"github.com/pake-go/pakeos/internal/commands/copy"
 	"github.com/pake-go/pakeos/internal/commands/install"
 	"github.com/pake-go/pakeos/internal/commands/link"
+	"github.com/pake-go/pakeos/internal/commands/mkdir"
 	"github.com/pake-go/pakeos/internal/commands/move"
 	"github.com/pake-go/pakeos/internal/commands/remove"
 	"github.com/pake-go/pakeos/internal/commands/run"
@@ -19,6 +20,7 @@ var Candidates = []pakelib.CommandCandidate{
 	copyCandidate,
 	installCandidate,
 	linkCandidate,
+	mkdirCandidate,
 	moveCandidate,
 	removeCandidate,
 	runCandidate,
@@ -41,6 +43,11 @@ var installCandidate = pakelib.CommandCandidate{
 var linkCandidate = pakelib.CommandCandidate{
 	Validator:   &link.LinkValidator{},
 	Constructor: link.New,
+}
+
+var mkdirCandidate = pakelib.CommandCandidate{
+	Validator:   &mkdir.MkdirValidator{},
+	Constructor: mkdir.New,
 }
 
 var moveCandidate = pakelib.CommandCandidate{
