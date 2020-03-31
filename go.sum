@@ -1,5 +1,7 @@
 github.com/PGo-Projects/output v0.0.0-20181030161838-eb5f9fd060a4 h1:Mxz1xpGy39ki7vcVPtChtGHd8TCPOCREYFqTaTbMj2c=
 github.com/PGo-Projects/output v0.0.0-20181030161838-eb5f9fd060a4/go.mod h1:sFKzl/RKdoOKcqPo9SWoLHacqsnd4oe9dcvYtinV69Q=
+github.com/PGo-Projects/output v0.0.0-20200331004504-59c843518d91 h1:LQeHJJPcKmSziNu/G7YsjNWvv+Xatpjxtc/y+hUJBjM=
+github.com/PGo-Projects/output v0.0.0-20200331004504-59c843518d91/go.mod h1:akrObvIsWXqUYAV6wblIsHZO9P3gLDmVU/ENdmsR4y8=
 github.com/buger/goterm v0.0.0-20180423150900-6d19e6a8df12 h1:aZVdiV35VTHoMJnL2GcJFxuedXBJUJx5YRw1sif1XN4=
 github.com/buger/goterm v0.0.0-20180423150900-6d19e6a8df12/go.mod h1:u9UyCz2eTrSGy6fbupqJ54eY5c4IC8gREQ1053dK12U=
 github.com/buger/goterm v0.0.0-20181115115552-c206103e1f37 h1:uxxtrnACqI9zK4ENDMf0WpXfUsHP5V8liuq5QdgDISU=
@@ -16,8 +18,6 @@ github.com/lucasjones/reggen v0.0.0-20180717132126-cdb49ff09d77 h1:6xiz3+ZczT3M4
 github.com/lucasjones/reggen v0.0.0-20180717132126-cdb49ff09d77/go.mod h1:5ELEyG+X8f+meRWHuqUOewBOhvHkl7M76pdGEansxW4=
 github.com/mitchellh/go-homedir v1.1.0 h1:lukF9ziXFxDFPkA1vsr5zpc1XuPDn/wFntq5mG+4E0Y=
 github.com/mitchellh/go-homedir v1.1.0/go.mod h1:SfyaCUpYCn1Vlf4IUYiD9fPX4A5wJrkLzIz1N1q0pr0=
-github.com/pake-go/pake-lib v0.0.0-20190207024528-6182e236e791 h1:fs9s0skcsu1eZerKHv9bObxtoyl8Y6e/WsMietkyxyE=
-github.com/pake-go/pake-lib v0.0.0-20190207024528-6182e236e791/go.mod h1:zA6lzXYwntWDHy8p/aoY0EohOH9AB56j49EA0nFKnII=
 github.com/pake-go/pake-lib v0.0.0-20190208131704-938bc769b0fe h1:woxdtAnr0zRJ+dzuJEeAiOw7zspP7cLkcRjiQBs33zA=
 github.com/pake-go/pake-lib v0.0.0-20190208131704-938bc769b0fe/go.mod h1:zA6lzXYwntWDHy8p/aoY0EohOH9AB56j49EA0nFKnII=
 github.com/spf13/cobra v0.0.3 h1:ZlrZ4XsMRm04Fr5pSFxBgfND2EBVa1nLpiy1stUsX/8=
@@ -28,5 +28,5 @@ github.com/udhos/equalfile v0.3.0 h1:KhG4xhhkittrgIV/ekHtpEPh7MLxtbjm6kLEwp5Dlbg
 github.com/udhos/equalfile v0.3.0/go.mod h1:1LOX9HjdFMke7ryP3IPby09FkswyY5KzhhsT37wLz/Y=
 golang.org/x/sys v0.0.0-20181030150119-7e31e0c00fa0 h1:biUuj9O+0+XckRUCDzjoOGm6yFV5c0IHbm1ODP3e4Zw=
 golang.org/x/sys v0.0.0-20181030150119-7e31e0c00fa0/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=
-golang.org/x/sys v0.0.0-20190204203706-41f3e6584952 h1:FDfvYgoVsA7TTZSbgiqjAbfPbK47CNHdWl3h/PJtii0=
-golang.org/x/sys v0.0.0-20190204203706-41f3e6584952/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=
+golang.org/x/sys v0.0.0-20190626221950-04f50cda93cb h1:fgwFCsaw9buMuxNd6+DQfAuSFqbNiQZpcgJQAgJsK6k=
+golang.org/x/sys v0.0.0-20190626221950-04f50cda93cb/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
